@@ -1,0 +1,20 @@
+{
+  "ingredients": [
+    {
+      "id": 1,
+      "name": "Piletina"
+    },
+    {
+      "id": 2,
+      "name": "Krompir"
+    },
+    {
+      "id": 3,
+      "name": "Paradajz"
+    },
+    {
+      "id": 4,
+      "name": "Luk"
+    }
+  ]
+}
