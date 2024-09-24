@@ -2,16 +2,20 @@ import 'package:cook_guru/app/localization/app_strings.dart';
 import 'package:cook_guru/app/routes/app_pages.dart';
 import 'package:cook_guru/app/service/ingredient/ingredients_service.dart';
 import 'package:cook_guru/app/service/recipe/recipes_service.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'app/localization/localization.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  _initServices();
   _setTranslations();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  _initServices();
 
   runApp(const MyApp());
 }
@@ -43,7 +47,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       getPages: AppPages.routes,
-      initialRoute: AppPages.ingredientSelect,
+      initialRoute: AppPages.onBoarding,
     );
   }
 }

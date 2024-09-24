@@ -12,17 +12,20 @@ import 'package:get/get.dart';
 
 class RecipeTile extends StatelessWidget {
   Recipe recipe;
+  Function()? onMoreTap;
+  bool hasElevation;
 
-  RecipeTile(this.recipe, {super.key});
+  RecipeTile(this.recipe,
+      {super.key, this.onMoreTap, this.hasElevation = true});
 
   @override
   Widget build(BuildContext context) {
-    return Hero(tag: recipe.id, child: Material(child: _buildTileCard()));
+    return Hero(tag: recipe.id, child: _buildTileCard());
   }
 
   Material _buildTileCard() => Material(
         color: AppColors.lightCream,
-        elevation: AppStyling.elevation,
+        elevation: hasElevation ? AppStyling.elevation : 0,
         borderRadius: AppStyling.borderRadius,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -30,8 +33,11 @@ class RecipeTile extends StatelessWidget {
             ClipRRect(
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(16)),
-              child: NetworkImageWidget(
-                  recipe.headerImageUrl ?? 'https://picsum.photos/600/300'),
+              child: recipe.headerImageUrl != null &&
+                      recipe.headerImageUrl!.endsWith('.png')
+                  ? Image.asset(recipe.headerImageUrl!)
+                  : NetworkImageWidget(
+                      recipe.headerImageUrl ?? 'https://picsum.photos/600/300'),
             ),
             _buildTileBody()
           ],
@@ -61,9 +67,12 @@ class RecipeTile extends StatelessWidget {
             Align(
                 alignment: Alignment.centerRight,
                 child: CTAButtonWidget(
-                    () =>
-                        Get.toNamed(AppPages.recipeDetails, arguments: recipe),
-                    AppStrings.viewMore.tr))
+                    onMoreTap ??
+                        () {
+                          Get.toNamed(AppPages.recipeDetails,
+                              arguments: recipe);
+                        },
+                    label: AppStrings.viewMore.tr))
           ],
         ),
       );

@@ -23,6 +23,25 @@
           "other_platform_oauth_client": []
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337327696750:android:c2b1168d2849cb8a88af7f",
+        "android_client_info": {
+          "package_name": "com.nesto.nesto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmtLek6DyRDjh6JTG8IF-x6PzqHBlZW2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
     }
   ],
   "configuration_version": "1"

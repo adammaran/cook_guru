@@ -16,7 +16,7 @@ class SearchFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Material(
         borderRadius: AppStyling.borderRadius,
-    elevation: AppStyling.elevation,
+        elevation: AppStyling.elevation,
         color: AppColors.lightCream,
         child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),

@@ -19,7 +19,7 @@ class RecipeListController extends GetxController {
   }
 
   void getRecipesByIds() {
-    for (int recipeId in Get.arguments['recipeIds']) {
+    for (String recipeId in Get.arguments['recipeIds']) {
       filteredRecipes.add(recipesService.recipes
           .firstWhere((element) => element.id == recipeId));
     }

@@ -19,29 +19,34 @@ class IngredientSelectController extends GetxController {
 
   late RxList<Ingredient> filteredIngredients = RxList.empty();
 
-  RxList<int> selectedIngredients = RxList.empty();
-  RxList<int> foundRecipesIdList = RxList.empty();
+  RxList<String> selectedIngredients = RxList.empty();
+  RxList<String> foundRecipesIdList = RxList.empty();
 
   TextEditingController searchController = TextEditingController();
 
   @override
   void onInit() {
-    waitForIngredients();
     super.onInit();
   }
 
   @override
   void onReady() {
+    waitForIngredients();
     super.onReady();
   }
 
   ///Close listener when value changes
   void waitForIngredients() {
-    ingredientsService.ingredientsLoading.listen((isLoading) {
-      if (!isLoading) {
-        filteredIngredients.value = ingredientsService.ingredients;
-      }
-    });
+    if (!ingredientsService.ingredientsLoading.value) {
+      filteredIngredients.value = ingredientsService.ingredients;
+    } else {
+      ingredientsService.ingredientsLoading.listen((isLoading) {
+        debugPrint('slusam!');
+        if (!isLoading) {
+          filteredIngredients.value = ingredientsService.ingredients;
+        }
+      });
+    }
   }
 
   void onSearchChange(String filter) {

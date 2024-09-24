@@ -5,18 +5,22 @@ import 'package:flutter/material.dart';
 
 class CTAButtonWidget extends StatelessWidget {
   Function() onPressed;
-  String label;
+  String? label;
+  Widget? body;
+  Color? color;
 
-  CTAButtonWidget(this.onPressed, this.label);
+  CTAButtonWidget(this.onPressed, {this.label, this.body, this.color});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: onPressed,
-        style: ElevatedButton.styleFrom(backgroundColor: AppColors.leafGreen),
-        child: Text(
-          label,
-          style: AppTextStyle.ctaLabel,
-        ));
+        style: ElevatedButton.styleFrom(
+            backgroundColor: color ?? AppColors.leafGreen),
+        child: body ??
+            Text(
+              label ?? '',
+              style: AppTextStyle.ctaLabel,
+            ));
   }
 }

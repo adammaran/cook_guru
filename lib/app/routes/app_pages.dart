@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/ingredient_select/bindings/ingredient_select_binding.dart';
 import '../modules/ingredient_select/views/ingredient_select_view.dart';
+import '../modules/onboarding/bindings/onboarding_binding.dart';
+import '../modules/onboarding/views/onboarding_view.dart';
 import '../modules/recipe_details/bindings/recipe_details_binding.dart';
 import '../modules/recipe_details/views/recipe_details_view.dart';
 import '../modules/recipe_list/bindings/recipe_list_binding.dart';
@@ -12,6 +14,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
+  static const onBoarding = Routes.ONBOARDING;
   static const ingredientSelect = Routes.INGREDIENT_SELECT;
   static const recipeList = Routes.RECIPE_LIST;
   static const recipeDetails = Routes.RECIPE_DETAILS;
@@ -19,6 +22,7 @@ class AppPages {
   static final routes = [
     GetPage(
         name: _Paths.INGREDIENT_SELECT,
+        transition: Transition.noTransition,
         page: () => const IngredientSelectView(),
         binding: IngredientSelectBinding()),
     GetPage(
@@ -30,6 +34,11 @@ class AppPages {
       name: _Paths.RECIPE_DETAILS,
       page: () => const RecipeDetailsView(),
       binding: RecipeDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.ONBOARDING,
+      page: () => OnBoardingView(),
+      binding: OnBoardingBinding(),
     ),
   ];
 }

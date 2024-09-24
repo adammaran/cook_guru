@@ -11,8 +11,9 @@ class IngredientResponse {
 }
 
 class Ingredient {
-  int id;
+  String id;
   String name;
+  List<String> filters = ['vege', 'breakfast'];
 
   RxBool isSelected = RxBool(false);
 
@@ -20,4 +21,6 @@ class Ingredient {
 
   factory Ingredient.fromJson(Map<String, dynamic> json) =>
       Ingredient(json['id'], json['name']);
+
+  Map<String, dynamic> toJson() => {'name': name};
 }

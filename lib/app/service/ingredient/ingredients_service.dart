@@ -1,9 +1,12 @@
 import 'package:cook_guru/app/models/ingredient/ingredient_response.dart';
+import 'package:cook_guru/app/repository/ingredients/ingredients_repository.dart';
 import 'package:cook_guru/app/tools/tools.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class IngredientsService extends GetxService {
+  final IngredientsRepository _repository = IngredientsRepository();
+
   RxBool ingredientsLoading = RxBool(false);
 
   List<Ingredient> ingredients = List.empty();
@@ -17,9 +20,8 @@ class IngredientsService extends GetxService {
   void getIngredients() async {
     try {
       ingredientsLoading.value = true;
-      ingredients = IngredientResponse.fromJson(
-              await loadJsonFromAssets('assets/mock/mock_ingredients.json'))
-          .ingredients;
+      ingredients = await _repository.getAllIngredients();
+      debugPrint('zavrsio brat');
       ingredientsLoading.value = false;
     } catch (e) {
       ingredientsLoading.value = false;

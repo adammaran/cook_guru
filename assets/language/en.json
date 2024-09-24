@@ -1,7 +1,19 @@
 {
+  "welcome": "Welcome",
+  "ingredients": "Ingredients",
+  "recipes": "Recipes",
+  "welcomeScreenDesc": "Welcome to Cook Guru.\nBon appetit!",
+  "ingredientsScreenDesc": "Select what you have.\nWe will find the recipes for you!",
+  "recipesScreenDesc": "Eat what you want.\nClick 'view more' to start cooking!",
+  "welcomeOnBoardingDesc": "Take a look at the steps that are between you and your new, favorite recipe!",
+  "selectIngredient": "Select ingredient",
+  "chicken": "Chicken",
+  "potato": "Potato",
+  "egg": "Egg",
+  "cheese": "Cheese",
   "appTitle": "Cook Guru",
   "recipesFound": "Recipes found",
   "searchIngredients": "Search ingredients",
   "viewMore": "View more",
-  "selectIngredients": "Select ingredients"
+  "selectIngredients": "Select ingredients",
 }

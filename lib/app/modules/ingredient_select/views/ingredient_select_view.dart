@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:cook_guru/app/constants/theme/app_colors.dart';
 import 'package:cook_guru/app/routes/app_pages.dart';
+import 'package:cook_guru/app/service/recipe/recipes_service.dart';
 import 'package:cook_guru/app/widget/loader/circular_loader_widget.dart';
 import 'package:cook_guru/app/widget/page/page_widget.dart';
 import 'package:cook_guru/app/widget/text_filed/search_field_widget.dart';
@@ -27,7 +28,7 @@ class IngredientSelectView extends GetView<IngredientSelectController> {
           body: Obx(() => controller.ingredientsService.ingredientsLoading.value
               ? CircularLoaderWidget()
               : _buildSuccessState())),
-      floatingActionButton: Obx(() => _buildFAB()),
+      floatingActionButton: _buildFAB(),
     );
   }
 
@@ -65,8 +66,24 @@ class IngredientSelectView extends GetView<IngredientSelectController> {
         controller.navigateToRecipes();
       },
       backgroundColor: AppColors.leafGreen,
-      label: Text(
-        '${controller.foundRecipesIdList.length.toString()} ${AppStrings.recipesFound.tr}',
-        style: TextStyle(color: Colors.white),
+      label: Row(
+        children: [
+          Obx(
+            () => Get.find<RecipesService>().loadingIngredients.value
+                ? Container(
+                    width: 14,
+                    height: 14,
+                    margin: const EdgeInsets.only(right: 8.0),
+                    child: const CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
+                  )
+                : Text('${controller.foundRecipesIdList.length.toString()} '),
+          ),
+          Text(
+            AppStrings.recipesFound.tr,
+            style: TextStyle(color: AppColors.lightCream),
+          ),
+        ],
       ));
 }

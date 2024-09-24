@@ -27,8 +27,8 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/language/en.json
-    - assets/mock/mock_ingredients.json
-    - assets/mock/mock_recipes.json
+    - assets/language/
+    - assets/images/
+    - assets/images/mock_recipe_images/
 
   uses-material-design: true

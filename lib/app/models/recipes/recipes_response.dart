@@ -9,15 +9,19 @@ class RecipesResponse {
 }
 
 class Recipe {
-  int id;
+  String id;
   String name;
-  List<int> ingredients;
+  List<String> ingredientIds = [];
   String description;
   String duration;
   String? headerImageUrl;
 
-  Recipe(this.id, this.name, this.ingredients, this.description, this.duration,
-      this.headerImageUrl);
+  factory Recipe.mock(
+          String id, String name, String description, String headerImageUrl) =>
+      Recipe(id, name, [], description, '30 min', headerImageUrl);
+
+  Recipe(this.id, this.name, this.ingredientIds, this.description,
+      this.duration, this.headerImageUrl);
 
   factory Recipe.fromJson(Map<String, dynamic> json) => Recipe(
       json['id'],
@@ -26,4 +30,12 @@ class Recipe {
       json['description'],
       json['duration'],
       json['header_image_url']);
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'ingredients': ingredientIds,
+        'description': description,
+        'duration': duration,
+        'headerImageUrl': headerImageUrl
+      };
 }

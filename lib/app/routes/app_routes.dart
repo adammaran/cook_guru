@@ -7,6 +7,7 @@ abstract class Routes {
   static const INGREDIENT_SELECT = _Paths.INGREDIENT_SELECT;
   static const RECIPE_LIST = _Paths.RECIPE_LIST;
   static const RECIPE_DETAILS = _Paths.RECIPE_DETAILS;
+  static const ONBOARDING = _Paths.ONBOARDING;
 }
 
 abstract class _Paths {
@@ -15,4 +16,5 @@ abstract class _Paths {
   static const INGREDIENT_SELECT = '/ingredient-select';
   static const RECIPE_LIST = '/recipe-list';
   static const RECIPE_DETAILS = '/recipe-details';
+  static const ONBOARDING = '/onboarding';
 }
